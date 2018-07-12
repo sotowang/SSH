@@ -10,9 +10,9 @@
 
     <package name="basicstruts" extends="struts-default">
 
-        <action name="listProduct" class="productActionBean" method="list">
-            <result name="listJsp">list.jsp</result>
-        </action>
+        <!--<action name="listProduct" class="productActionBean" method="list">-->
+            <!--<result name="listJsp">list.jsp</result>-->
+        <!--</action>-->
 
     </package>
 </struts>

@@ -1,11 +1,22 @@
 package com.soto.dao.impl;
 
-import com.soto.pojo.Product;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-
 import java.util.List;
 
-public class ProductDAOImpl extends HibernateTemplate implements com.soto.dao.ProductDAO {
+import javax.annotation.Resource;
+
+import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.soto.dao.ProductDAO;
+import com.soto.pojo.Product;
+
+@Repository("productDAO")
+public class ProductDAOImpl extends HibernateTemplate implements ProductDAO{
+    @Resource(name="sf")
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        super.setSessionFactory(sessionFactory);
+    };
 
     public List<Product> list() {
         return find("from Product");
@@ -15,4 +26,5 @@ public class ProductDAOImpl extends HibernateTemplate implements com.soto.dao.Pr
     public void add(Product p) {
         save(p);
     }
+
 }

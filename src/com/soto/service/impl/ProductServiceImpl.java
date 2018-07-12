@@ -3,12 +3,14 @@ package com.soto.service.impl;
 import com.soto.dao.ProductDAO;
 import com.soto.pojo.Product;
 import com.soto.service.ProductService;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
     ProductDAO productDAO;
-
+    @Transactional(propagation=Propagation.REQUIRED,rollbackForClassName="Exception")
     public List<Product> list() {
         List<Product> products= productDAO.list();
         if(products.isEmpty()){
